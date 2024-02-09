@@ -22,6 +22,14 @@ var (
 	rtDense = reflect.TypeOf((*mat.Dense)(nil)).Elem()
 )
 
+// Write writes 'val' into 'w' in the NumPy data format.
+//
+//   - if val is a scalar, it must be of a supported type (bools, (u)ints, floats and complexes)
+//   - if val is a slice or array, it must be a slice/array of a supported type.
+//     the shape (len,) will be written out.
+//   - if val is a mat.Dense, the correct shape will be transmitted. (ie: (nrows, ncols))
+//
+// The data-array will always be written out in C-order (row-major).
 func WriteHeader(w io.Writer, val interface{}, header []int) error {
 	hdr := newHeader()
 	rv := reflect.Indirect(reflect.ValueOf(val))
@@ -29,8 +37,16 @@ func WriteHeader(w io.Writer, val interface{}, header []int) error {
 	if err != nil {
 		return err
 	}
+	shape, err := shapeFrom(rv)
+	if err != nil {
+		return err
+	}
 	hdr.Descr.Type = dt
-	hdr.Descr.Shape = header
+	if len(header) > 0 {
+		hdr.Descr.Shape = header
+	} else {
+		hdr.Descr.Shape = shape
+	}
 
 	rdt, err := newDtype(hdr.Descr.Type)
 	if err != nil {
