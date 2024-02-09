@@ -20,7 +20,7 @@ $> go get github.com/sbinet/npyio
 
 ## Documentation
 
-Is available on [godoc](https://godoc.org/github.com/sbinet/npyio)
+Is available on [godoc](https://godoc.org/github.com/hyde46/npyio)
 
 ## npyio-ls
 
