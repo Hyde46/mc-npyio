@@ -17,6 +17,37 @@ import (
 // Write writes the values vs to the named npz archive file.
 //
 // The data-array will always be written out in C-order (row-major).
+func WriteWithHeader(name string, vs map[string]interface{}, headerShapes map[string][]int) error {
+	w, err := Create(name)
+	if err != nil {
+		return err
+	}
+	defer w.Close()
+
+	ks := make([]string, 0, len(vs))
+	for k := range vs {
+		ks = append(ks, k)
+	}
+	sort.Strings(ks)
+
+	for _, k := range ks {
+		err = w.WriteHeader(k, vs[k], headerShapes[k])
+		if err != nil {
+			return err
+		}
+	}
+
+	err = w.Close()
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Write writes the values vs to the named npz archive file.
+//
+// The data-array will always be written out in C-order (row-major).
 func Write(name string, vs map[string]interface{}) error {
 	w, err := Create(name)
 	if err != nil {
@@ -119,6 +150,21 @@ func (w *Writer) Write(name string, v interface{}) error {
 	}
 
 	err = npy.Write(ww, v)
+	if err != nil {
+		return fmt.Errorf("npz: could not write npz entry %q: %w", name, err)
+	}
+
+	return nil
+}
+
+// Write writes the named NumPy array data to the npz archive.
+func (w *Writer) WriteHeader(name string, v interface{}, shape []int) error {
+	ww, err := w.wz.Create(name)
+	if err != nil {
+		return fmt.Errorf("npz: could not create npz entry %q: %w", name, err)
+	}
+
+	err = npy.WriteHeader(ww, v, shape)
 	if err != nil {
 		return fmt.Errorf("npz: could not write npz entry %q: %w", name, err)
 	}

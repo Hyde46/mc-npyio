@@ -22,6 +22,29 @@ var (
 	rtDense = reflect.TypeOf((*mat.Dense)(nil)).Elem()
 )
 
+func WriteHeader(w io.Writer, val interface{}, header []int) error {
+	hdr := newHeader()
+	rv := reflect.Indirect(reflect.ValueOf(val))
+	dt, err := dtypeFrom(rv, rv.Type())
+	if err != nil {
+		return err
+	}
+	hdr.Descr.Type = dt
+	hdr.Descr.Shape = header
+
+	rdt, err := newDtype(hdr.Descr.Type)
+	if err != nil {
+		return err
+	}
+
+	err = writeHeader(w, hdr, rdt)
+	if err != nil {
+		return err
+	}
+
+	return writeData(w, rv, rdt)
+}
+
 // Write writes 'val' into 'w' in the NumPy data format.
 //
 //   - if val is a scalar, it must be of a supported type (bools, (u)ints, floats and complexes)
