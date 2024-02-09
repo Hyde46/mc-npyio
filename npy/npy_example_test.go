@@ -12,7 +12,7 @@ import (
 
 	"gonum.org/v1/gonum/mat"
 
-	"github.com/sbinet/npyio/npy"
+	"github.com/Hyde46/mc-npyio/npy"
 )
 
 func ExampleWrite() {

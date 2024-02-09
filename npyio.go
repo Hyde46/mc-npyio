@@ -61,7 +61,7 @@ import (
 	"io"
 	"reflect"
 
-	"github.com/sbinet/npyio/npy"
+	"github.com/Hyde46/mc-npyio/npy"
 )
 
 var (

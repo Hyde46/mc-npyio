@@ -11,7 +11,7 @@ import (
 	"os"
 	"sort"
 
-	"github.com/sbinet/npyio/npy"
+	"github.com/Hyde46/mc-npyio/npy"
 )
 
 // Write writes the values vs to the named npz archive file.

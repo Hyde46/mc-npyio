@@ -1,13 +1,5 @@
 # npyio
 
-[![GitHub release](https://img.shields.io/github/release/sbinet/npyio.svg)](https://github.com/sbinet/npyio/releases)
-[![go.dev reference](https://pkg.go.dev/badge/github.com/sbinet/npyio)](https://pkg.go.dev/github.com/sbinet/npyio)
-[![CI](https://github.com/sbinet/npyio/workflows/CI/badge.svg)](https://github.com/sbinet/npyio/actions)
-[![codecov](https://codecov.io/gh/sbinet/npyio/branch/master/graph/badge.svg)](https://codecov.io/gh/sbinet/npyio)
-[![Go Report Card](https://goreportcard.com/badge/github.com/sbinet/npyio)](https://goreportcard.com/report/github.com/sbinet/npyio)
-[![License](https://img.shields.io/badge/License-BSD--3-blue.svg)](https://github.com/sbinet/npyio/blob/master/LICENSE)
-[![GoDoc](https://godoc.org/github.com/sbinet/npyio?status.svg)](https://godoc.org/github.com/sbinet/npyio)
-
 `npyio` provides read/write access to [numpy data files](https://numpy.org/neps/nep-0001-npy-format.html).
 
 ## Installation
@@ -15,17 +7,17 @@
 Is done via `go get`:
 
 ```sh
-$> go get github.com/sbinet/npyio
+$> go get github.com/Hyde46/mc-npyio
 ```
 
 ## Documentation
 
-Is available on [godoc](https://godoc.org/github.com/hyde46/npyio)
+Is available on [godoc](https://godoc.org/github.com/Hyde46/mc-npyio)
 
 ## npyio-ls
 
-`npyio-ls` is a command using `github.com/sbinet/npyio` (located under
-`github.com/sbinet/npyio/cmd/npyio-ls`) to display the content of a (list of)
+`npyio-ls` is a command using `github.com/Hyde46/mc-npyio` (located under
+`github.com/Hyde46/mc-npyio/cmd/npyio-ls`) to display the content of a (list of)
 `NumPy` data file(s).
 
 ```
@@ -86,7 +78,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/sbinet/npyio"
+	"github.com/Hyde46/mc-npyio"
 	"gonum.org/v1/gonum/mat"
 )
 
@@ -135,7 +127,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/sbinet/npyio"
+	"github.com/Hyde46/mc-npyio"
 )
 
 func main() {
@@ -169,7 +161,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/sbinet/npyio"
+	"github.com/Hyde46/mc-npyio"
 )
 
 func main() {

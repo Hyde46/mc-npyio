@@ -14,8 +14,8 @@ import (
 	"strings"
 	"unicode/utf8"
 
+	"github.com/Hyde46/mc-npyio/npy/float16"
 	py "github.com/nlpodyssey/gopickle/types"
-	"github.com/sbinet/npyio/npy/float16"
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/unicode/utf32"
 )

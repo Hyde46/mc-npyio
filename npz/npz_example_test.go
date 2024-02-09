@@ -9,7 +9,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/sbinet/npyio/npz"
+	"github.com/Hyde46/mc-npyio/npz"
 )
 
 func ExampleOpen() {

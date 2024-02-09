@@ -10,7 +10,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/sbinet/npyio"
+	npyio "github.com/Hyde46/mc-npyio"
 )
 
 func main() {

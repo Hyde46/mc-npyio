@@ -38,7 +38,7 @@ package npy
 import (
 	"encoding/binary"
 
-	"github.com/sbinet/npyio/npy/float16"
+	"github.com/Hyde46/mc-npyio/npy/float16"
 )
 
 `)

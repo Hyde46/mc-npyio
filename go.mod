@@ -1,4 +1,4 @@
-module github.com/sbinet/npyio
+module github.com/Hyde46/mc-npyio
 
 go 1.20
 

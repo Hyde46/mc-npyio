@@ -10,7 +10,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/sbinet/npyio/npy"
+	"github.com/Hyde46/mc-npyio/npy"
 )
 
 // Read reads the item named name from the reader r and

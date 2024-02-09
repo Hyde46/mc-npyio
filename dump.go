@@ -12,8 +12,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/sbinet/npyio/npy"
-	"github.com/sbinet/npyio/npz"
+	"github.com/Hyde46/mc-npyio/npy"
+	"github.com/Hyde46/mc-npyio/npz"
 )
 
 // Dump dumps the content of the provided reader to the writer,

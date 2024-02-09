@@ -11,7 +11,7 @@ on:
 env:
   GOPROXY: "https://proxy.golang.org"
   TAGS: "-tags=ci"
-  COVERAGE: "-coverpkg=github.com/sbinet/npyio/..."
+  COVERAGE: "-coverpkg=github.com/Hyde46/mc-npyio/..."
 
 jobs:
 
