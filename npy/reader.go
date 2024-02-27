@@ -107,6 +107,17 @@ func (r *Reader) readDescr(buf []byte) {
 		return
 	}
 
+	// The function assumes the headers to have trailing commas.
+	// This is a hacky way to add the trailing commas back in, if they are missing
+	// Example:
+	// buf: `{'descr': '<i4', 'fortran_order': False, 'shape': ()}`
+	// becomes: `{'descr': '<i4', 'fortran_order': False, 'shape': (), }`
+	// bytes.ReplaceAll is okay to use here because there will never be a second level of nesting
+	// indirectly making sure that only the suffix is to be replaced
+	if !bytes.HasSuffix(buf, []byte(", }")) {
+		buf = bytes.ReplaceAll(buf, []byte(")}"), []byte("), }"))
+	}
+
 	var (
 		descrKey = []byte("'descr': ")
 		orderKey = []byte("'fortran_order': ")
@@ -138,7 +149,7 @@ func (r *Reader) readDescr(buf []byte) {
 		return
 	}
 
-	if string(shape) == "()" {
+	if string(shape) == "()" || string(shape) == "" {
 		r.Header.Descr.Shape = nil
 		return
 	}
